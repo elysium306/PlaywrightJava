@@ -1,0 +1,79 @@
+package com.playwright.utilities;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Arrays;
+import java.util.Properties;
+
+import com.microsoft.playwright.Browser;
+import com.microsoft.playwright.BrowserContext;
+import com.microsoft.playwright.BrowserType;
+import com.microsoft.playwright.Page;
+import com.microsoft.playwright.Playwright;
+
+public class PlaywrightFactory {
+
+	private static Playwright playwright;
+	private static Browser browser;
+	private static BrowserContext browserContext;
+	private static Page page;
+
+	private static InputStream inputStream;
+	private static Properties prop;
+
+	public static Page initPlaywright(String browserName) {
+
+		System.out.println(String.format("Browser Name: %s", browserName));
+		playwright = Playwright.create();
+
+		switch (browserName.toLowerCase()) {
+		case "chromium":
+			browser = playwright.chromium().launch(
+					new BrowserType.LaunchOptions().setHeadless(false).setArgs(Arrays.asList("--start-maximized")));
+			break;
+		case "firefox":
+			browser = playwright.firefox().launch(
+					new BrowserType.LaunchOptions().setHeadless(false).setArgs(Arrays.asList("--start-maximized")));
+			break;
+		case "safari":
+			browser = playwright.webkit().launch(
+					new BrowserType.LaunchOptions().setHeadless(false).setArgs(Arrays.asList("--start-maximized")));
+			break;
+		case "chrome":
+			browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setChannel("chrome")
+					.setHeadless(false).setArgs(Arrays.asList("--start-maximized")));
+			break;
+		default:
+			System.out.println("Please Provide A Valid Browser Name ...");
+			break;
+		}
+
+		browserContext = browser.newContext();
+		page = browserContext.newPage();
+		prop = initProp();
+		System.out.println(String.format("** Opening Website: %s", prop.getProperty("etsy_home")));
+		page.navigate(prop.getProperty("etsy_home"));
+
+		return page;
+	}
+
+	public static Properties initProp() {
+		String filePath = System.getProperty("user.dir") + "\\src\\main\\resources\\properties\\configuration.properties";
+		try {
+			System.out.println(String.format("*** File Path: %s", filePath));
+			inputStream = new FileInputStream(filePath);
+			prop = new Properties();
+			prop.load(inputStream);
+		} catch (FileNotFoundException e) {
+			System.out.println(String.format("** FileNotFoundException: ", e));
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println(String.format("** IOEception: ", e));
+			e.printStackTrace();
+		}
+		return prop;
+	}
+
+}
