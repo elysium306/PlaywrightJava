@@ -7,9 +7,9 @@ import com.playwright.utilities.PlaywrightFactory;
 
 public class HomePage {
 
-	private Page page;
+	protected Page page;
 
-	private Properties prop = PlaywrightFactory.initProp();
+	protected Properties prop = PlaywrightFactory.initProp();
 
 	// 1. Login locators - OR
 	private String login_button = "//button[normalize-space()='Sign in']";
@@ -50,8 +50,8 @@ public class HomePage {
 
 	public LoginPage login() {
 		page.click(login_button);
-		page.fill(email_box, prop.getProperty("username"));
-		page.fill(password, prop.getProperty("password"));
+		page.fill(email_box, prop.getProperty("usrname"));
+		page.fill(password, prop.getProperty("psword"));
 		page.click(submit_button);
 		if (!page.isChecked(stay_signed_in)) {
 			System.out.println("'Stay Signed In' is NOT checked");

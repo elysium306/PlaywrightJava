@@ -23,27 +23,31 @@ public class PlaywrightFactory {
 	private static InputStream inputStream;
 	private static Properties prop;
 
-	public static Page initPlaywright(String browserName) {
-
-		System.out.println(String.format("Browser Name: %s", browserName));
+	public static Page initPlaywright(Properties prop) {
+		
 		playwright = Playwright.create();
+		
+		prop = initProp();
+		
+		String browserName = prop.getProperty("browser").trim();
+		System.out.println(String.format("Browser Name: %s", prop.getProperty("browser")));
 
-		switch (browserName.toLowerCase()) {
+		switch (browserName) {
 		case "chromium":
 			browser = playwright.chromium().launch(
-					new BrowserType.LaunchOptions().setHeadless(false).setArgs(Arrays.asList("--start-maximized")));
+					new BrowserType.LaunchOptions().setArgs(Arrays.asList("--start-maximized")).setHeadless(false));
 			break;
 		case "firefox":
 			browser = playwright.firefox().launch(
-					new BrowserType.LaunchOptions().setHeadless(false).setArgs(Arrays.asList("--start-maximized")));
+					new BrowserType.LaunchOptions().setArgs(Arrays.asList("--start-maximized")).setHeadless(false));
 			break;
 		case "safari":
 			browser = playwright.webkit().launch(
-					new BrowserType.LaunchOptions().setHeadless(false).setArgs(Arrays.asList("--start-maximized")));
+					new BrowserType.LaunchOptions().setArgs(Arrays.asList("--start-maximized")).setHeadless(false));
 			break;
 		case "chrome":
 			browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setChannel("chrome")
-					.setHeadless(false).setArgs(Arrays.asList("--start-maximized")));
+					.setArgs(Arrays.asList("--start-maximized")).setHeadless(false));
 			break;
 		default:
 			System.out.println("Please Provide A Valid Browser Name ...");
@@ -52,15 +56,16 @@ public class PlaywrightFactory {
 
 		browserContext = browser.newContext();
 		page = browserContext.newPage();
-		prop = initProp();
-		System.out.println(String.format("** Opening Website: %s", prop.getProperty("etsy_home")));
+		
+		System.out.println(String.format("** Opening Website: %s", prop.getProperty("etsy_home").trim()));
 		page.navigate(prop.getProperty("etsy_home"));
 
 		return page;
 	}
 
 	public static Properties initProp() {
-		String filePath = System.getProperty("user.dir") + "\\src\\main\\resources\\properties\\configuration.properties";
+		String filePath = System.getProperty("user.dir")
+				+ "\\src\\main\\resources\\properties\\configuration.properties";
 		try {
 			System.out.println(String.format("*** File Path: %s", filePath));
 			inputStream = new FileInputStream(filePath);

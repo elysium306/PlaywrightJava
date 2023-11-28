@@ -1,5 +1,7 @@
 package com.playwright.helpers;
 
+import java.util.Properties;
+
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
@@ -9,13 +11,16 @@ import com.playwright.utilities.PlaywrightFactory;
 
 public class BaseTest {
 
-	protected Page page;
+	Page page;
+
+	protected Properties prop;
 
 	protected HomePage homePage;
 
 	@BeforeTest
 	public void setup() {
-		page = PlaywrightFactory.initPlaywright("chrome");
+		prop = PlaywrightFactory.initProp();
+		page = PlaywrightFactory.initPlaywright(prop);
 		homePage = new HomePage(page);
 	}
 

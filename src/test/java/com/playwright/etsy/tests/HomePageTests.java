@@ -5,26 +5,21 @@ import static org.testng.Assert.assertEquals;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.microsoft.playwright.Page;
-import com.playwright.etsy.pages.HomePage;
 import com.playwright.helpers.AppConstants;
 import com.playwright.helpers.BaseTest;
 
 public class HomePageTests extends BaseTest {
 
-	private Page page;
-
-	@Test
+	@Test(priority = 1)
 	public void login_test() {
-		homePage = new HomePage(page);
+		
 		homePage.login();
 		String actualHomePageTitle = homePage.getHomePageTitle();
-		assertEquals(actualHomePageTitle, AppConstants.LANDING_PAGE_TITLE);
+		assertEquals(actualHomePageTitle, AppConstants.ETSY_LOGIN_PAGE_TITLE);
 	}
 
-	@Test(dataProvider = "productList")
+	@Test(dataProvider = "productList", priority = 2, dependsOnMethods = "login_test")
 	public void search_test(String productName) {
-		homePage = new HomePage(page);
 		System.out.println(String.format("Searching for Product: %s", productName));
 		homePage.searchForProduct(productName);
 	}
