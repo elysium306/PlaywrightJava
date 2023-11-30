@@ -67,7 +67,6 @@ public class PlaywrightFactory {
 		String filePath = System.getProperty("user.dir")
 				+ "\\src\\main\\resources\\properties\\configuration.properties";
 		try {
-			System.out.println(String.format("*** File Path: %s", filePath));
 			inputStream = new FileInputStream(filePath);
 			prop = new Properties();
 			prop.load(inputStream);

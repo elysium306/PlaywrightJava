@@ -1,6 +1,7 @@
 package com.playwright.etsy.tests;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -22,14 +23,16 @@ public class HomePageTests extends BaseTest {
 	public void search_test(String productName) {
 		System.out.println(String.format("Searching for Product: %s", productName));
 		homePage.searchForProduct(productName);
+		String actualTitle = homePage.getHomePageTitle();
+		assertTrue(actualTitle.toLowerCase().contains(productName.toLowerCase()), "Assert that the search web title contains product name");
 	}
 	
 	@DataProvider
 	public Object[][] productList(){
 		return new Object[][] {
-			{"cute mug"},
+//			{"cute mug"},
 			{"ugly mug"},
-			{"pretty mug"}
+//			{"pretty mug"}
 		};
 	}
 

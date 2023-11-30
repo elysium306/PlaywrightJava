@@ -76,7 +76,7 @@ public class PlaywrightAPITests {
 			APIResponse response = reqContext.get("https://reqres.in/api/users?page=2");
 			System.out.println("API Response: " + response.text());
 
-			byte[] responseBody = response.body();
+//			byte[] responseBody = response.body();
 			
 			ObjectMapper objectMapper = new ObjectMapper();
 			try {

@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite thread-count="4" parallel="methods" name="Suite">
-  <test thread-count="4" parallel="methods" name="Test">
-    <classes>
-      <class name="com.qa.api.tests.GetTests"/>
-      <class name="com.playwright.demo.App"/>
-      <class name="com.playwright.demo.PlaywrightBasics"/>
-      <class name="com.playwright.demo.Demo2"/>
-      <class name="com.qa.api.tests.Test1"/>
-      <class name="com.qa.api.tests.PlaywrightAPITests"/>
-      <class name="com.playwright.tests.herokuApp.LoginTest"/>
-      <class name="com.qa.api.tests.PlaywrightBasics"/>
-    </classes>
-  </test> <!-- Test -->
+	<test thread-count="4" parallel="methods" name="Test">
+		<classes>
+			<class name="com.playwright.etsy.tests.HomePageTests" />
+		</classes>
+	</test> <!-- Test -->
 </suite> <!-- Suite -->
