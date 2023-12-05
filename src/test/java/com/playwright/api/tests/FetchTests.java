@@ -1,25 +1,30 @@
 package com.playwright.api.tests;
 
 
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+
 import org.testng.annotations.Test;
 
+import com.microsoft.playwright.APIRequest;
 import com.microsoft.playwright.APIRequestContext;
 import com.microsoft.playwright.APIResponse;
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.*;
+import com.playwright.utils.BaseAPITest;
 
 public class FetchTests extends BaseAPITest {
+	APIRequest request;
+	APIRequestContext requestContext;
 	
 		@Test
 		public void fetchRequest1() {
-			APIRequestContext request = BaseAPITest.getRequest();
-			APIResponse getResponse = request.get("https://www.google.com");
+			requestContext = BaseAPITest.getRequest();
+			APIResponse getResponse = requestContext.get("https://www.google.com");
 			assertThat(getResponse).isOK();
 		}
 		
 		@Test
 		public void fetRequest2() {
-			APIRequestContext request = BaseAPITest.getRequest();
-			APIResponse response = request.get("https://www.yahoo.com");
+			requestContext = BaseAPITest.getRequest();
+			APIResponse response = requestContext.get("https://www.yahoo.com");
 			assertThat(response).isOK();
 		}
 

@@ -1,4 +1,4 @@
-package com.playwright.api.tests;
+package com.playwright.demo;
 
 import static org.testng.Assert.assertNotNull;
 
@@ -10,7 +10,7 @@ import com.microsoft.playwright.Page;
 import com.playwright.utilities.PlaywrightFactory;
 import com.playwright.utilities.PropertyReader;
 
-public class POM_Test1 {
+public class PlaywrightUITests {
 
 	private Properties prop;
 
