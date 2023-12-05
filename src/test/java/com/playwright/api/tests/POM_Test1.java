@@ -1,4 +1,4 @@
-package com.qa.api.tests;
+package com.playwright.api.tests;
 
 import static org.testng.Assert.assertNotNull;
 

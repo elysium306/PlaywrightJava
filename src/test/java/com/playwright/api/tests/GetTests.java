@@ -1,4 +1,4 @@
-package com.qa.api.tests;
+package com.playwright.api.tests;
 
 import java.util.HashMap;
 import java.util.Map;
