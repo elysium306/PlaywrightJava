@@ -1,4 +1,4 @@
-package com.playwright.api.tests;
+package com.playwright.ui.tests;
 
 import static org.testng.Assert.assertEquals;
 

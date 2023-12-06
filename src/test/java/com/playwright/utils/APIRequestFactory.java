@@ -5,7 +5,7 @@ import com.microsoft.playwright.APIRequest;
 import com.microsoft.playwright.APIRequestContext;
 import com.microsoft.playwright.Playwright;
 
-public class JavaScriptUtils {
+public class APIRequestFactory {
 	
 	private static Playwright playwright;
 	private static APIRequest request;

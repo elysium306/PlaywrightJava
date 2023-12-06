@@ -1,10 +1,15 @@
 package com.playwright.utils;
 
+import java.io.IOException;
+
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.microsoft.playwright.APIRequest;
 import com.microsoft.playwright.APIRequestContext;
+import com.microsoft.playwright.APIResponse;
 import com.microsoft.playwright.Playwright;
 
 public class BaseAPITest {
@@ -31,5 +36,21 @@ public class BaseAPITest {
 		}
 		return request.newContext();
 	}
+	
+	public static JsonNode getJsonNode(APIResponse response) {
+		ObjectMapper om = new ObjectMapper();
+		JsonNode jsonNode = null;
+		try {
+			jsonNode = om.readTree(response.body());
+			System.out.println(jsonNode.toPrettyString());
+		} catch (IOException e) {
+			System.out.println(String.format("*** Initializing JsonNode Object Failed: ", e));
+			e.printStackTrace();
+		}
+		return jsonNode;
+	}
 
+	public static int getJsonResponseBodysize(APIResponse response) {
+		return getJsonNode(response).size();
+	}
 }
