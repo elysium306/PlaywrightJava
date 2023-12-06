@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 import com.microsoft.playwright.APIRequestContext;
 import com.microsoft.playwright.APIResponse;
-import com.playwright.utils.BaseAPITest;
+import com.playwright.utilities.BaseAPITest;
 
 public class PostTests extends BaseAPITest{
 	

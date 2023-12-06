@@ -6,7 +6,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
 import com.microsoft.playwright.Page;
-import com.playwright.etsy.pages.HomePage;
+import com.playwright.ui.pages.HomePage;
 import com.playwright.utilities.PlaywrightFactory;
 
 public class BaseTest {
