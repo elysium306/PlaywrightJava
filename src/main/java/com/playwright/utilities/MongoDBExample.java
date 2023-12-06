@@ -36,7 +36,9 @@ public class MongoDBExample {
 	}
 
 	/**
-	 * Insert single document to the database
+	 * @apiNote Insert single document to the database
+	 * @param collectionName
+	 * @param doc
 	 */
 	public static void insertSingleDocument(String collectionName, Document doc) {
 		MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017");
@@ -61,7 +63,11 @@ public class MongoDBExample {
 	}
 
 	/**
-	 * 
+	 * @apiNote This method deletes the collection using collection name, key, and
+	 *          value.
+	 * @param collectionName
+	 * @param key
+	 * @param value
 	 */
 	public static void deleteDocument(String collectionName, String key, String value) {
 		MongoClient mongoClient = MongoClients.create();
@@ -73,6 +79,10 @@ public class MongoDBExample {
 		System.out.println("Document <" + collectionName + "> deleted successfully.");
 	}
 
+	/**
+	 * @apiNote This method drops the collection from the database
+	 * @param collectionName
+	 */
 	public static void dropCollection(String collectionName) {
 		MongoClient mongoClient = MongoClients.create();
 		MongoDatabase database = mongoClient.getDatabase(db_name);
@@ -86,12 +96,18 @@ public class MongoDBExample {
 		}
 	}
 
+	/**
+	 * @apiNote This method checks if the given collection is present or not
+	 * @param collectionName
+	 * @return primitive boolean value; true if the collection present, false if
+	 *         does not.
+	 */
 	public static boolean isCollectionExist(String collectionName) {
 		MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017");
 		MongoDatabase db = mongoClient.getDatabase(collectionName);
 		boolean collectionExists = db.listCollectionNames().into(new ArrayList<>()).contains(collectionName);
-		System.out.println(
-				"Collection Name " + collectionName + " " + (collectionExists ? "exists" : "does not exist"));
+		System.out
+				.println("Collection Name " + collectionName + " " + (collectionExists ? "exists" : "does not exist"));
 		return collectionExists;
 	}
 }
