@@ -1,4 +1,4 @@
-package com.playwright.tests.herokuApp;
+package com.playwright.ui.tests;
 
 import static org.testng.Assert.assertNotNull;
 

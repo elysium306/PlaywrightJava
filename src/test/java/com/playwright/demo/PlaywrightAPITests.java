@@ -1,4 +1,4 @@
-package com.qa.api.tests;
+package com.playwright.demo;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static org.testng.Assert.assertEquals;
