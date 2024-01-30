@@ -1,14 +1,14 @@
 package com.playwright.ui.Base;
 
-import java.util.Properties;
-
+import com.microsoft.playwright.Page;
+import com.playwright.helpers.PlaywrightFactory;
+import com.playwright.ui.Pages.HomePage;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
-import com.microsoft.playwright.Page;
-import com.playwright.ui.Pages.HomePage;
+import java.util.Properties;
 
-public class BaseTest {
+public class BaseUITest {
 
 	Page page;
 

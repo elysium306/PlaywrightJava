@@ -7,7 +7,7 @@ import java.util.Properties;
 import org.testng.annotations.Test;
 
 import com.microsoft.playwright.Page;
-import com.playwright.ui.Base.PlaywrightFactory;
+import com.playwright.helpers.PlaywrightFactory;
 import com.playwright.utilities.PropertyReader;
 
 public class PlaywrightUITests {

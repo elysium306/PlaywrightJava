@@ -1,21 +1,12 @@
-package com.playwright.ui.Base;
+package com.playwright.helpers;
+
+import com.microsoft.playwright.*;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.microsoft.playwright.APIRequest;
-import com.microsoft.playwright.APIRequestContext;
-import com.microsoft.playwright.Browser;
-import com.microsoft.playwright.BrowserContext;
-import com.microsoft.playwright.BrowserType;
-import com.microsoft.playwright.Page;
-import com.microsoft.playwright.Playwright;
 
 public class PlaywrightFactory {
 
@@ -23,20 +14,15 @@ public class PlaywrightFactory {
 
 	// Initiate UI Component
 	private static Browser browser;
-	private static BrowserContext browserContext;
-	private static Page page;
 
-	// Initiate API Component
+    // Initiate API Component
 	private static final APIRequest request;
 	private static final APIRequestContext requestContext;
 
-	private static InputStream inputStream;
-	private static Properties prop;
-
-	// JSON Parser Initiation
-	protected static ObjectMapper objectMapper;
+    private static Properties prop;
 
 	static {
+		// Playwright initialize
 		playwright = Playwright.create();
 		request = playwright.request();
 		requestContext = request.newContext();
@@ -71,8 +57,8 @@ public class PlaywrightFactory {
 			break;
 		}
 
-		browserContext = browser.newContext();
-		page = browserContext.newPage();
+        BrowserContext browserContext = browser.newContext();
+        Page page = browserContext.newPage();
 
 		System.out.printf("** Opening Website: %s%n", prop.getProperty("etsy_home").trim());
 		page.navigate(prop.getProperty("etsy_home"));
@@ -80,18 +66,17 @@ public class PlaywrightFactory {
 		return page;
 	}
 
+
+
 	public static Properties initProp() {
 		String filePath = System.getProperty("user.dir")
-				+ "\\src\\main\\resources\\properties\\configuration.properties";
+				+ "/src/main/resources/properties/configuration.properties";
 		try {
-			inputStream = new FileInputStream(filePath);
+            InputStream inputStream = new FileInputStream(filePath);
 			prop = new Properties();
 			prop.load(inputStream);
-		} catch (FileNotFoundException e) {
-			System.out.printf("** FileNotFoundException: %n", e);
-			e.printStackTrace();
 		} catch (IOException e) {
-			System.out.printf("** IOEception: %n", e);
+			System.out.printf("** IOException: %n", e);
 			e.printStackTrace();
 		}
 		return prop;
@@ -99,13 +84,6 @@ public class PlaywrightFactory {
 
 	public static APIRequestContext getRequest() {
 		return requestContext;
-	}
-
-	public static ObjectMapper getMapper() {
-		if (objectMapper == null) {
-			objectMapper = new ObjectMapper();
-		}
-		return objectMapper;
 	}
 
 }

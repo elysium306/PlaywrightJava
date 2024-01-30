@@ -11,43 +11,41 @@ public class PropertyReader {
 
 	private static final Properties properties = new Properties();
 
-	private static FileInputStream fis;
+	private static FileInputStream inputStream;
 
 	private static String filePath;
 
 	public static String getProperty(String key) {
-		filePath = System.getProperty("user.dir") + "\\src\\main\\resources\\properties\\configuration.properties";
+		filePath = System.getProperty("user.dir") + "/src/main/resources/properties/configuration.properties";
 		System.out.println("*** configuration.properties: " + filePath);
-		String value = "";
 
 		try {
 			config = new File(filePath);
-			fis = new FileInputStream(config);
-			properties.load(fis);
-			value = properties.getProperty(key);
+			inputStream = new FileInputStream(config);
+			properties.load(inputStream);
+			inputStream.close();
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
-		return value;
+		return properties.getProperty(key);
 	}
 	
 	public static String getLocator(String key) {
-		// /PlaywrightDemo/src/main/resources/properties/locators.properties
-		filePath = System.getProperty("user.dir") + "\\src\\main\\resources\\properties\\locators.properties";
+		// src/main/resources/properties/locators.properties
+		filePath = System.getProperty("user.dir") + "/src/main/resources/properties/locators.properties";
 		System.out.println("*** locator.properties: " + filePath);
-		String value = "";
 
 		try {
 			config = new File(filePath);
-			fis = new FileInputStream(config);
-			properties.load(fis);
-			value = properties.getProperty(key);
+			inputStream = new FileInputStream(config);
+			properties.load(inputStream);
+			inputStream.close();
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
-		return value;
+		return properties.getProperty(key);
 	}
 
 	public static void main(String[] args) {

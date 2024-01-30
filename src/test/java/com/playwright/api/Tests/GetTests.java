@@ -1,37 +1,31 @@
 package com.playwright.api.Tests;
 
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-import static org.testng.Assert.assertEquals;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.microsoft.playwright.APIResponse;
+import com.microsoft.playwright.options.HttpHeader;
+import com.microsoft.playwright.options.RequestOptions;
+import com.playwright.api.Base.BaseAPITest;
+import com.playwright.helpers.AppConstants;
+import com.playwright.helpers.PlaywrightFactory;
+import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.testng.annotations.Test;
-
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.microsoft.playwright.APIRequestContext;
-import com.microsoft.playwright.APIResponse;
-import com.microsoft.playwright.options.HttpHeader;
-import com.microsoft.playwright.options.RequestOptions;
-import com.playwright.helpers.AppConstants;
-import com.playwright.api.Base.APIRequestFactory;
-import com.playwright.ui.Base.PlaywrightFactory;
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+import static com.playwright.api.Tests.BaseAPITest.getJsonNode;
+import static com.playwright.api.Tests.BaseAPITest.getJsonResponseBodysize;
+import static org.testng.Assert.assertEquals;
 
 public class GetTests extends BaseAPITest {
 	private static Map<String, String> headersMap;
 
-	APIRequestContext requestContext;
-	APIResponse response;
-	ObjectMapper objectMapper;
-	JsonNode jsonResponse;
-
 	@Test(description = "GET API Test")
 	public void getTest() {
-		APIRequestContext request = PlaywrightFactory.getRequest();
-		APIResponse response = request.get("https://reqres.in/api/users?page=2");
+		requestContext = PlaywrightFactory.getRequest();
+		APIResponse response = requestContext.get("https://reqres.in/api/users?page=2");
 		System.out.println(response.body().toString());
 
 		// Parse API JSON Response:
@@ -44,7 +38,7 @@ public class GetTests extends BaseAPITest {
 
 	@Test(description = "POST API Test")
 	public void postTest() {
-		APIRequestContext request = PlaywrightFactory.getRequest();
+		requestContext= PlaywrightFactory.getRequest();
 
 		// Create JSON body
 		Map<String, Object> jsonData = new HashMap<>();
@@ -53,7 +47,7 @@ public class GetTests extends BaseAPITest {
 		RequestOptions options = RequestOptions.create();
 		options.setData(new Object[] {});
 
-		APIResponse response = request.post("", options);
+		APIResponse response = requestContext.post("", options);
 
 		System.out.println(response.body().toString());
 	}
@@ -74,7 +68,7 @@ public class GetTests extends BaseAPITest {
 
 	@Test(description = "DELETE API Test")
 	public void deleteTest() {
-		APIRequestContext requestContext = PlaywrightFactory.getRequest();
+		requestContext = PlaywrightFactory.getRequest();
 
 		RequestOptions options = RequestOptions.create();
 		options.setData(new Object[] {});
@@ -86,11 +80,10 @@ public class GetTests extends BaseAPITest {
 
 	@Test
 	public void getAllUsers() throws IOException {
-		requestContext = APIRequestFactory.getRequest();
 		response = requestContext.get("https://reqres.in/api/users?page=2");
 
 		// Create ObjectMapper instance
-		objectMapper = APIRequestFactory.getMapper();
+		objectMapper = BaseAPITest.getMapper();
 		jsonResponse = objectMapper.readTree(response.body());
 
 		System.out.println("----Printing GET Response Body----");
