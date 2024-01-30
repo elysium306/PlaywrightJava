@@ -1,4 +1,4 @@
-package com.playwright.utilities;
+package com.playwright.api.Tests;
 
 import java.io.IOException;
 

@@ -2,13 +2,7 @@ package com.playwright.demo;
 
 import static org.testng.Assert.assertEquals;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.testng.annotations.Test;
-
-//import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserContext;
@@ -25,23 +19,23 @@ public class Demo2 {
 	BrowserContext context;
 	Page page;
 
-	@BeforeAll
+	@BeforeSuite
 	static void launchBrowser() {
 		playwright = Playwright.create();
 		browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
 	}
 
-	@AfterAll
+	@AfterSuite
 	static void closeBrowser() {
 		playwright.close();
 	}
 
-	@BeforeEach
+	@BeforeMethod
 	void createContextAndPage() {
 		context = browser.newContext();
 	}
 
-	@AfterEach
+	@AfterMethod
 	void closeContext() {
 		context.close();
 	}

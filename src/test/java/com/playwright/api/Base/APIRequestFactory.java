@@ -1,4 +1,4 @@
-package com.playwright.utilities;
+package com.playwright.api.Base;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.microsoft.playwright.APIRequest;

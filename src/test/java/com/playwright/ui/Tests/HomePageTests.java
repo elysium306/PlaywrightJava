@@ -1,4 +1,4 @@
-package com.playwright.ui.tests;
+package com.playwright.ui.Tests;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -7,7 +7,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.playwright.helpers.AppConstants;
-import com.playwright.helpers.BaseTest;
+import com.playwright.ui.Base.BaseTest;
 
 public class HomePageTests extends BaseTest {
 

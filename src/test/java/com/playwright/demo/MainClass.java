@@ -2,7 +2,7 @@ package com.playwright.demo;
 
 import java.util.Properties;
 
-import com.playwright.utilities.PlaywrightFactory;
+import com.playwright.ui.Base.PlaywrightFactory;
 
 public class MainClass {
 

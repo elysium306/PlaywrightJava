@@ -11,12 +11,12 @@
 	- mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install-deps"
 	
 
-##### Why Playwright website used **try-with-resouces** to instantiate the object creation	
+##### Why Playwright website used **try-with-resources** to instantiate the object creation	
 The try block you’re referring to is known as a try-with-resources statement in Java. It’s a special kind of try statement that ensures that each resource declared in the try is closed at the end of the statement.
 
 Playwright playwright = Playwright.create() is the resource. The advantage of using this sort of try block is that it automatically closes the Playwright object once it’s no longer needed. This helps to prevent resource leaks and makes your code cleaner and more robust.
 
-It’s particularly useful when dealing with resources that must be closed after use, such as files, network connections, or, in this case, a browser instance controlled by Playwright. If you didn’t use a try-with-resources statement, you would have to manually close the Playwright object in a finally block, which can be error-prone.
+It’s particularly useful when dealing with resources that must be closed after use, such as files, network connections, or, in this case, a browser instance controlled by Playwright. If you didn't use a try-with-resources statement, you would have to manually close the Playwright object in a finally block, which can be error-prone.
 
 	- The advantages of using *try-with_resources* are:
 

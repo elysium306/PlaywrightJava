@@ -1,9 +1,9 @@
-package com.playwright.ui.pages;
+package com.playwright.ui.Pages;
 
 import java.util.Properties;
 
 import com.microsoft.playwright.Page;
-import com.playwright.utilities.PlaywrightFactory;
+import com.playwright.ui.Base.PlaywrightFactory;
 
 public class HomePage {
 

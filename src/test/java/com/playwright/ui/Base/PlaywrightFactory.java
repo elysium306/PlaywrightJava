@@ -1,4 +1,4 @@
-package com.playwright.utilities;
+package com.playwright.ui.Base;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

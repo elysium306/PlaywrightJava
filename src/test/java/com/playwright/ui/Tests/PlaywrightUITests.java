@@ -1,4 +1,4 @@
-package com.playwright.demo;
+package com.playwright.ui.Tests;
 
 import static org.testng.Assert.assertNotNull;
 
@@ -7,7 +7,7 @@ import java.util.Properties;
 import org.testng.annotations.Test;
 
 import com.microsoft.playwright.Page;
-import com.playwright.utilities.PlaywrightFactory;
+import com.playwright.ui.Base.PlaywrightFactory;
 import com.playwright.utilities.PropertyReader;
 
 public class PlaywrightUITests {
