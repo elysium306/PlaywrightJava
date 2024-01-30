@@ -2,6 +2,7 @@ package com.playwright.api.Tests;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 import java.io.IOException;
 import java.util.Map;
@@ -49,7 +50,7 @@ public class PlaywrightAPITests {
 			byte[] resBody = getResponse.body();
 			ObjectMapper objMapper = new ObjectMapper();
 			JsonNode responseBody = objMapper.readTree(resBody);
-			System.out.println(String.format("Status Code: %d :: Status Message %s", getStatusCode, getStatusMessage));
+			System.out.printf("Status Code: %d :: Status Message %s%n", getStatusCode, getStatusMessage);
 			System.out.println("### Display Each User Info: " + responseBody.toPrettyString());
 			getResponse.dispose(); // If not disposed, the response will stay in the memory, memory pollution
 		}
@@ -90,7 +91,7 @@ public class PlaywrightAPITests {
 			responseHeaders.forEach((k, v) -> System.out.println(k + " : " + v));
 
 			assertEquals(responseHeaders.get("content-type"), "application/json; charset=utf-8", "Assert Content Type");
-			assertEquals(response.ok(), true, "Assert that the response status should be 'Ok'");
+            assertTrue(response.ok(), "Assert that the response status should be 'Ok'");
 
 			response.dispose();
 			playwright.close();
@@ -106,7 +107,7 @@ public class PlaywrightAPITests {
 		);
 		System.out.println(requestContext.toString());
 		System.out.println(response.text());
-		assertEquals(response.ok(), true);
+        assertTrue(response.ok());
 		assertThat(response).isOK();
 		response.dispose();
 		try {

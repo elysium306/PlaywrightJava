@@ -5,15 +5,12 @@ import static org.testng.Assert.assertEquals;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import com.microsoft.playwright.*;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import com.microsoft.playwright.Browser;
-import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.BrowserType.LaunchOptions;
-import com.microsoft.playwright.Page;
-import com.microsoft.playwright.Playwright;
 
 public class PlaywrightBasics {
 
@@ -21,7 +18,11 @@ public class PlaywrightBasics {
 
 	private Browser browser;
 
-	private BrowserContext context;
+	private BrowserContext browserContext;
+
+	private APIRequest request;
+
+	private APIRequestContext requestContext;
 
 	private Page page;
 
@@ -37,8 +38,8 @@ public class PlaywrightBasics {
 		option.setHeadless(false);
 		option.setExecutablePath(Path.of("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"));
 		browser = playwright.chromium().launch(option);
-		context = browser.newContext();
-		page = context.newPage();
+		browserContext = browser.newContext();
+		page = browserContext.newPage();
 	}
 
 	@Test
@@ -52,7 +53,7 @@ public class PlaywrightBasics {
 	@AfterMethod
 	public void tearDown() {
 		page.close();
-		context.close();
+		browserContext.close();
 		browser.close();
 		playwright.close();
 	}

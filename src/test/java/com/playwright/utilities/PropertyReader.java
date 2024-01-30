@@ -9,7 +9,7 @@ public class PropertyReader {
 
 	private static File config;
 
-	private static Properties properties = new Properties();
+	private static final Properties properties = new Properties();
 
 	private static FileInputStream fis;
 

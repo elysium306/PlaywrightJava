@@ -3,6 +3,7 @@ package com.playwright.ui.Tests;
 import static org.testng.Assert.assertEquals;
 
 import java.util.Arrays;
+import java.util.List;
 
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -26,7 +27,7 @@ public class JSAlertsTests {
 	public void setup() {
 		playwright = Playwright.create();
 		browser = playwright.chromium()
-				.launch(new LaunchOptions().setHeadless(false).setArgs(Arrays.asList("--start-maximized")));
+				.launch(new LaunchOptions().setHeadless(false).setArgs(List.of("--start-maximized")));
 		context = browser.newContext();
 		page = context.newPage();
 	}
@@ -62,13 +63,13 @@ public class JSAlertsTests {
 		page.navigate("https://the-internet.herokuapp.com");
 		page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("JavaScript Alerts")).click();
 		page.onceDialog(dialog -> {
-			System.out.println(String.format("Dialog message: %s", dialog.message()));
+			System.out.printf("Dialog message: %s%n", dialog.message());
 			dialog.dismiss();
 		});
 		page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Click for JS Prompt")).click();
 
 		page.onDialog(dialog -> {
-			System.out.println(String.format("Dialog message: %s", dialog.message()));
+			System.out.printf("Dialog message: %s%n", dialog.message());
 			dialog.accept("test text");
 		});
 

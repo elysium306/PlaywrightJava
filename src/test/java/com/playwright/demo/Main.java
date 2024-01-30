@@ -6,9 +6,9 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		System.out.println(String.format("iTunes App ID: %d", AppConstants.ITUNES_APP_ID));
-		System.out.println(String.format("iTunes HomePage Title: %s", AppConstants.ETSY_HOME_PAGE_TITLE));
-		System.out.println(String.format("iTunes LoginPage Title: %s", AppConstants.ETSY_LOGIN_PAGE_TITLE));
+		System.out.printf("iTunes App ID: %d%n", AppConstants.ITUNES_APP_ID);
+		System.out.printf("iTunes HomePage Title: %s%n", AppConstants.ETSY_HOME_PAGE_TITLE);
+		System.out.printf("iTunes LoginPage Title: %s%n", AppConstants.ETSY_LOGIN_PAGE_TITLE);
 	}
 
 }

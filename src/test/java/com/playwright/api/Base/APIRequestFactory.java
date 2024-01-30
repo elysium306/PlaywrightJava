@@ -7,9 +7,9 @@ import com.microsoft.playwright.Playwright;
 
 public class APIRequestFactory {
 	
-	private static Playwright playwright;
-	private static APIRequest request;
-	private static APIRequestContext requestContext;
+	private static final Playwright playwright;
+	private static final APIRequest request;
+	private static final APIRequestContext requestContext;
 	protected static ObjectMapper objectMapper;
 	
 	static {

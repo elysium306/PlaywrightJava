@@ -44,7 +44,7 @@ public class BaseAPITest {
 			jsonNode = om.readTree(response.body());
 			System.out.println(jsonNode.toPrettyString());
 		} catch (IOException e) {
-			System.out.println(String.format("*** Initializing JsonNode Object Failed: ", e));
+			System.out.printf("*** Initializing JsonNode Object Failed: %n", e);
 			e.printStackTrace();
 		}
 		return jsonNode;

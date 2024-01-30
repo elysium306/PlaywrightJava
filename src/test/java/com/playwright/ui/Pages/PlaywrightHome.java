@@ -11,8 +11,8 @@ public class PlaywrightHome {
 	protected Properties prop;
 
 	// 1. String locators _
-	private String get_Started = "getStarted_Sjon";
-	private String docs = "header div div a[href='/docs/intro']:first-child";
+	private final String get_Started = "getStarted_Sjon";
+	private final String docs = "header div div a[href='/docs/intro']:first-child";
 
 	// 2. Need to create constructor
 	public PlaywrightHome(String browserName) {
