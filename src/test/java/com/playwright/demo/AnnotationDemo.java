@@ -10,7 +10,7 @@ import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 
-public class Demo2 {
+public class AnnotationDemo {
 	// Shared between all tests in this class
 	static Playwright playwright;
 	static Browser browser;

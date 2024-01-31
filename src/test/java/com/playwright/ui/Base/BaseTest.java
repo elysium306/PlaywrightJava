@@ -10,7 +10,7 @@ import com.playwright.ui.Pages.HomePage;
 
 public class BaseTest {
 
-	Page page;
+	protected Page page;
 
 	protected Properties prop;
 

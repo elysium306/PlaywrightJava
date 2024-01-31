@@ -19,93 +19,90 @@ import com.microsoft.playwright.Playwright;
 
 public class PlaywrightFactory {
 
-	private static final Playwright playwright;
+    private static final Playwright playwright;
 
-	// Initiate UI Component
-	private static Browser browser;
-	private static BrowserContext browserContext;
-	private static Page page;
+    // Initiate UI Component
+    private static Browser browser;
+    private static BrowserContext browserContext;
+    private static Page page;
 
-	// Initiate API Component
-	private static final APIRequest request;
-	private static final APIRequestContext requestContext;
+    // Initiate API Component
+    private static final APIRequest request;
+    private static final APIRequestContext requestContext;
 
-	private static InputStream inputStream;
-	private static Properties prop;
+    private static InputStream inputStream;
+    private static Properties prop;
 
-	// JSON Parser Initiation
-	protected static ObjectMapper objectMapper;
+    // JSON Parser Initiation
+    protected static ObjectMapper objectMapper;
 
-	static {
-		playwright = Playwright.create();
-		request = playwright.request();
-		requestContext = request.newContext();
-	}
+    static {
+        playwright = Playwright.create();
+        request = playwright.request();
+        requestContext = request.newContext();
+    }
 
-	public static Page initPlaywright(Properties prop) {
+    public static Page initPlaywright(Properties prop) {
 
-		prop = initProp();
+        prop = initProp();
 
-		String browserName = prop.getProperty("browser").trim();
-		System.out.printf("Browser Name: %s%n", prop.getProperty("browser"));
+        String browserName = prop.getProperty("browser").trim();
+        System.out.printf("Browser Name: %s%n", prop.getProperty("browser"));
 
-		switch (browserName) {
-		case "chromium":
-			browser = playwright.chromium().launch(
-					new BrowserType.LaunchOptions().setArgs(List.of("--start-maximized")).setHeadless(false));
-			break;
-		case "firefox":
-			browser = playwright.firefox().launch(
-					new BrowserType.LaunchOptions().setArgs(List.of("--start-maximized")).setHeadless(false));
-			break;
-		case "safari":
-			browser = playwright.webkit().launch(
-					new BrowserType.LaunchOptions().setArgs(List.of("--start-maximized")).setHeadless(false));
-			break;
-		case "chrome":
-			browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setChannel("chrome")
-					.setArgs(List.of("--start-maximized")).setHeadless(false));
-			break;
-		default:
-			System.out.println("Please Provide A Valid Browser Name ...");
-			break;
-		}
+        switch (browserName) {
+            case "chromium":
+                browser = playwright.chromium().launch(
+                        new BrowserType.LaunchOptions().setArgs(List.of("--start-maximized")).setHeadless(false));
+                break;
+            case "firefox":
+                browser = playwright.firefox().launch(
+                        new BrowserType.LaunchOptions().setArgs(List.of("--start-maximized")).setHeadless(false));
+                break;
+            case "safari":
+                browser = playwright.webkit().launch(
+                        new BrowserType.LaunchOptions().setArgs(List.of("--start-maximized")).setHeadless(false));
+                break;
+            case "chrome":
+                browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setChannel("chrome")
+                        .setArgs(List.of("--start-maximized")).setHeadless(false));
+                break;
+            default:
+                System.out.println("Please Provide A Valid Browser Name ...");
+                break;
+        }
 
-		browserContext = browser.newContext();
-		page = browserContext.newPage();
+        browserContext = browser.newContext();
+        page = browserContext.newPage();
 
-		System.out.printf("** Opening Website: %s%n", prop.getProperty("etsy_home").trim());
-		page.navigate(prop.getProperty("etsy_home"));
+        return page;
+    }
 
-		return page;
-	}
+    public static Properties initProp() {
+        String filePath = System.getProperty("user.dir")
+                + "\\src\\main\\resources\\properties\\configuration.properties";
+        try {
+            inputStream = new FileInputStream(filePath);
+            prop = new Properties();
+            prop.load(inputStream);
+        } catch (FileNotFoundException e) {
+            System.out.printf("** FileNotFoundException: %n", e);
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.printf("** IOException: %n", e);
+            e.printStackTrace();
+        }
+        return prop;
+    }
 
-	public static Properties initProp() {
-		String filePath = System.getProperty("user.dir")
-				+ "\\src\\main\\resources\\properties\\configuration.properties";
-		try {
-			inputStream = new FileInputStream(filePath);
-			prop = new Properties();
-			prop.load(inputStream);
-		} catch (FileNotFoundException e) {
-			System.out.printf("** FileNotFoundException: %n", e);
-			e.printStackTrace();
-		} catch (IOException e) {
-			System.out.printf("** IOEception: %n", e);
-			e.printStackTrace();
-		}
-		return prop;
-	}
+    public static APIRequestContext getRequest() {
+        return requestContext;
+    }
 
-	public static APIRequestContext getRequest() {
-		return requestContext;
-	}
-
-	public static ObjectMapper getMapper() {
-		if (objectMapper == null) {
-			objectMapper = new ObjectMapper();
-		}
-		return objectMapper;
-	}
+    public static ObjectMapper getMapper() {
+        if (objectMapper == null) {
+            objectMapper = new ObjectMapper();
+        }
+        return objectMapper;
+    }
 
 }
