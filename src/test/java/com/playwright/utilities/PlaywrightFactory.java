@@ -1,21 +1,14 @@
 package com.playwright.utilities;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.microsoft.playwright.*;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.microsoft.playwright.APIRequest;
-import com.microsoft.playwright.APIRequestContext;
-import com.microsoft.playwright.Browser;
-import com.microsoft.playwright.BrowserContext;
-import com.microsoft.playwright.BrowserType;
-import com.microsoft.playwright.Page;
-import com.microsoft.playwright.Playwright;
 
 public class PlaywrightFactory {
 
@@ -29,7 +22,6 @@ public class PlaywrightFactory {
     // Initiate API Component
     private static final APIRequest request;
     private static final APIRequestContext requestContext;
-
     private static InputStream inputStream;
     private static Properties prop;
 

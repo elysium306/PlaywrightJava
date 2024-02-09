@@ -1,4 +1,4 @@
-package com.playwright.ui.Base;
+package com.playwright.ui.EtsyE2E.Base;
 
 import java.util.Properties;
 
@@ -7,7 +7,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
 import com.microsoft.playwright.Page;
-import com.playwright.ui.Pages.HomePage;
+import com.playwright.ui.EtsyE2E.Pages.HomePage;
 
 public class BaseTest {
 

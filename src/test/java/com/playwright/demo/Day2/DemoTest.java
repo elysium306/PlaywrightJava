@@ -1,16 +1,11 @@
 package com.playwright.demo.Day2;
 
-import java.util.regex.Pattern;
-
-import org.testng.annotations.Test;
-
-import com.microsoft.playwright.Browser;
-import com.microsoft.playwright.BrowserType;
-import com.microsoft.playwright.Locator;
-import com.microsoft.playwright.Page;
-import com.microsoft.playwright.Playwright;
+import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.AriaRole;
 import com.omutwar.Base.BaseClass;
+import org.testng.annotations.Test;
+
+import java.util.regex.Pattern;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
@@ -29,10 +24,13 @@ public class DemoTest extends BaseClass {
     @Test
     public void test1() {
         try (Playwright playwright = Playwright.create()) {
-            Browser browser = playwright.webkit().launch(new BrowserType.LaunchOptions().setHeadless(false));
+            Browser browser = playwright.webkit().launch(
+                    new BrowserType.LaunchOptions()
+                            .setHeadless(false)
+            );
             Page page = browser.newPage();
             page.navigate(testSite);
-            System.out.println(page.title());
+            System.out.println("*** Current Web Title: [%-8s]".formatted(page.title()));
         }
     }
 

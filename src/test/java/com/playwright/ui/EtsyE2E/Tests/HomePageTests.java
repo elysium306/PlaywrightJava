@@ -1,13 +1,13 @@
-package com.playwright.ui.Tests;
+package com.playwright.ui.EtsyE2E.Tests;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
+import com.playwright.ui.EtsyE2E.Base.BaseTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.playwright.helpers.AppConstants;
-import com.playwright.ui.Base.BaseTest;
 
 public class HomePageTests extends BaseTest {
 
