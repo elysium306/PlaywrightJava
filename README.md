@@ -1,4 +1,9 @@
+##### Playwright-Java Framework
 
+	/**
+	 * Playwright hierarchy: create Playwright object --> Browser object --> Page
+	 * object -->
+	 */
 
 
 ##### How to download the binaries using CMD:

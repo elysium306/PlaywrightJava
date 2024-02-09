@@ -1,27 +1,24 @@
 package com.playwright.demo;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotNull;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
-
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserType.LaunchOptions;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 import com.playwright.utilities.PropertyReader;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
 
 public class PlaywrightBasic {
 
 	private static Playwright playwright;
-
 	private static Browser browser;
-
 	private static final Map<String, String> site_info = new HashMap<>();
 
 	public static void main(String[] args) {
@@ -109,9 +106,5 @@ public class PlaywrightBasic {
 		playwright.close();
 		site_info.forEach((key, value) -> System.out.println(key + " :: " + value));
 	}
-	/**
-	 * Playwright hierarchy: create Playwright object --> Browser object --> Page
-	 * object -->
-	 */
 
 }
