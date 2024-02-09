@@ -3,7 +3,7 @@ package com.playwright.ui.Pages;
 import java.util.Properties;
 
 import com.microsoft.playwright.Page;
-import com.playwright.ui.Base.PlaywrightFactory;
+import com.playwright.utilities.PlaywrightFactory;
 
 public class LoginPage {
 

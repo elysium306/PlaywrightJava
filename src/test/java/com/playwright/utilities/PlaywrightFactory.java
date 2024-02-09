@@ -1,4 +1,4 @@
-package com.playwright.ui.Base;
+package com.playwright.utilities;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -51,20 +51,16 @@ public class PlaywrightFactory {
 
         switch (browserName) {
             case "chromium":
-                browser = playwright.chromium().launch(
-                        new BrowserType.LaunchOptions().setArgs(List.of("--start-maximized")).setHeadless(false));
+                browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setArgs(List.of("--start-maximized")).setHeadless(false));
                 break;
             case "firefox":
-                browser = playwright.firefox().launch(
-                        new BrowserType.LaunchOptions().setArgs(List.of("--start-maximized")).setHeadless(false));
+                browser = playwright.firefox().launch(new BrowserType.LaunchOptions().setArgs(List.of("--start-maximized")).setHeadless(false));
                 break;
             case "safari":
-                browser = playwright.webkit().launch(
-                        new BrowserType.LaunchOptions().setArgs(List.of("--start-maximized")).setHeadless(false));
+                browser = playwright.webkit().launch(new BrowserType.LaunchOptions().setArgs(List.of("--start-maximized")).setHeadless(false));
                 break;
             case "chrome":
-                browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setChannel("chrome")
-                        .setArgs(List.of("--start-maximized")).setHeadless(false));
+                browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setChannel("chrome").setArgs(List.of("--start-maximized")).setHeadless(false));
                 break;
             default:
                 System.out.println("Please Provide A Valid Browser Name ...");
@@ -78,8 +74,7 @@ public class PlaywrightFactory {
     }
 
     public static Properties initProp() {
-        String filePath = System.getProperty("user.dir")
-                + "\\src\\main\\resources\\properties\\configuration.properties";
+        String filePath = System.getProperty("user.dir") + "\\src\\main\\resources\\properties\\configuration.properties";
         try {
             inputStream = new FileInputStream(filePath);
             prop = new Properties();
@@ -104,5 +99,4 @@ public class PlaywrightFactory {
         }
         return objectMapper;
     }
-
 }
