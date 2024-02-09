@@ -4,6 +4,7 @@ import java.util.Properties;
 
 import com.microsoft.playwright.Page;
 import com.playwright.ui.Base.PlaywrightFactory;
+import com.playwright.utilities.PropertyReader;
 
 public class HomePage {
 
@@ -25,6 +26,8 @@ public class HomePage {
 	// 2. page constructor:
 	public HomePage(Page page) {
 		this.page = page;
+		String etsy_url = PropertyReader.getProperty("etsy_home").trim();
+		page.navigate(etsy_url);
 	}
 
 	// 3. page methods/actions
