@@ -28,7 +28,9 @@ It’s particularly useful when dealing with resources that must be closed after
 	- Automatic resource management: The runtime system automatically closes the resources at the end of the statement, which helps prevent resource leaks.
 	- Improved code readability: The syntax of the try-with-resources statement is more concise and clear, making the code easier to read.
 	- Better exception handling: The try-with-resources statement ensures that each resource is closed in reverse order from which they were created, even if exceptions are thrown, providing better exception handling.
-	![Playwright POM Framework Outline](src/main/resources/attachments/PlaywrightFrameworkOutline.png "Playwright Framework Outline")
+
+
+![Playwright POM Framework Outline](src/main/resources/attachments/PlaywrightFrameworkOutline.png "Playwright Framework Outline")
 
 ###### How to install driver binaries with CLI:
 	mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install msedge-dev"
