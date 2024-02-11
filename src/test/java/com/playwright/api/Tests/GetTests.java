@@ -1,4 +1,4 @@
-package com.playwright.api.tests;
+package com.playwright.api.Tests;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static org.testng.Assert.assertEquals;
@@ -17,8 +17,7 @@ import com.microsoft.playwright.APIResponse;
 import com.microsoft.playwright.options.HttpHeader;
 import com.microsoft.playwright.options.RequestOptions;
 import com.playwright.helpers.AppConstants;
-import com.playwright.utilities.APIRequestFactory;
-import com.playwright.utilities.BaseAPITest;
+import com.playwright.api.Base.APIRequestFactory;
 import com.playwright.utilities.PlaywrightFactory;
 
 public class GetTests extends BaseAPITest {

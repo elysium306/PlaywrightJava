@@ -1,4 +1,4 @@
-package com.playwright.helpers;
+package com.omutwar.Base;
 
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserType;

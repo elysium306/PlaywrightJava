@@ -12,7 +12,7 @@ import com.mongodb.client.MongoDatabase;
 
 public class MongoDBExample {
 
-	private static String db_name = "mydb";
+	private static final String db_name = "mydb";
 
 	public static void main(String[] args) {
 

@@ -22,7 +22,7 @@ public class PlaywrightBasic {
 
 	private static Browser browser;
 
-	private static Map<String, String> site_info = new HashMap<>();
+	private static final Map<String, String> site_info = new HashMap<>();
 
 	public static void main(String[] args) {
 

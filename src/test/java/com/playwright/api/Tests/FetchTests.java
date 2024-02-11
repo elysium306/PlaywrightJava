@@ -1,4 +1,4 @@
-package com.playwright.api.tests;
+package com.playwright.api.Tests;
 
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
@@ -8,7 +8,6 @@ import org.testng.annotations.Test;
 import com.microsoft.playwright.APIRequest;
 import com.microsoft.playwright.APIRequestContext;
 import com.microsoft.playwright.APIResponse;
-import com.playwright.utilities.BaseAPITest;
 
 public class FetchTests extends BaseAPITest {
 	APIRequest request;

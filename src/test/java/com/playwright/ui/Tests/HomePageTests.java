@@ -1,4 +1,4 @@
-package com.playwright.ui.tests;
+package com.playwright.ui.Tests;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -7,7 +7,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.playwright.helpers.AppConstants;
-import com.playwright.helpers.BaseTest;
+import com.playwright.ui.Base.BaseTest;
 
 public class HomePageTests extends BaseTest {
 
@@ -21,7 +21,7 @@ public class HomePageTests extends BaseTest {
 
 	@Test(dataProvider = "productList", priority = 2, dependsOnMethods = "login_test")
 	public void search_test(String productName) {
-		System.out.println(String.format("Searching for Product: %s", productName));
+		System.out.printf("Searching for Product: %s%n", productName);
 		homePage.searchForProduct(productName);
 		String actualTitle = homePage.getHomePageTitle();
 		assertTrue(actualTitle.toLowerCase().contains(productName.toLowerCase()), "Assert that the search web title contains product name");

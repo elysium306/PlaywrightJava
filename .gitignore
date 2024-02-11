@@ -1,0 +1,8 @@
+# ignore IDE settings
+.idea
+
+# ignore compile files
+target
+
+# ignore system environment files
+src/main/resources/properties/env.properties

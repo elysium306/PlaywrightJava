@@ -1,4 +1,4 @@
-package com.playwright.demo;
+package com.playwright.ui.Tests;
 
 import static org.testng.Assert.assertNotNull;
 

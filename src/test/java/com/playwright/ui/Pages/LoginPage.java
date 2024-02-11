@@ -1,4 +1,4 @@
-package com.playwright.ui.pages;
+package com.playwright.ui.Pages;
 
 import java.util.Properties;
 
