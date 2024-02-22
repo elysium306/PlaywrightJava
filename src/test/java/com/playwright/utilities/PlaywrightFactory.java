@@ -1,21 +1,17 @@
 package com.playwright.utilities;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.microsoft.playwright.*;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Properties;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.microsoft.playwright.APIRequest;
-import com.microsoft.playwright.APIRequestContext;
-import com.microsoft.playwright.Browser;
-import com.microsoft.playwright.BrowserContext;
-import com.microsoft.playwright.BrowserType;
-import com.microsoft.playwright.Page;
-import com.microsoft.playwright.Playwright;
 
 public class PlaywrightFactory {
 
@@ -23,14 +19,11 @@ public class PlaywrightFactory {
 
     // Initiate UI Component
     private static Browser browser;
-    private static BrowserContext browserContext;
-    private static Page page;
 
     // Initiate API Component
     private static final APIRequest request;
     private static final APIRequestContext requestContext;
 
-    private static InputStream inputStream;
     private static Properties prop;
 
     // JSON Parser Initiation
@@ -67,16 +60,15 @@ public class PlaywrightFactory {
                 break;
         }
 
-        browserContext = browser.newContext();
-        page = browserContext.newPage();
+        BrowserContext browserContext = browser.newContext();
 
-        return page;
+        return browserContext.newPage();
     }
 
     public static Properties initProp() {
-        String filePath = System.getProperty("user.dir") + "\\src\\main\\resources\\properties\\configuration.properties";
+        Path filePath = Paths.get(System.getProperty("user.dir"), "/src/main/resources/properties/configuration.properties");
         try {
-            inputStream = new FileInputStream(filePath);
+            InputStream inputStream = new FileInputStream(filePath.toString());
             prop = new Properties();
             prop.load(inputStream);
         } catch (FileNotFoundException e) {
