@@ -20,7 +20,7 @@ your code cleaner and more robust.
 
 It’s particularly useful when dealing with resources that must be closed after use, such as files, network connections,
 or, in this case, a browser instance controlled by Playwright. If you didn't use a try-with-resources statement, you
-would have to manually close the Playwright object in a finally block, which can be error-prone.
+would have to manually close the Playwright object in a 'finally' block, which can be error-prone.
 
 	- The advantages of using *try-with_resources* are:
 
