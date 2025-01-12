@@ -11,7 +11,6 @@
 	</properties>
 
 	<dependencies>
-
 		<!--
 		https://mvnrepository.com/artifact/com.microsoft.playwright/playwright -->
 		<dependency>
@@ -30,13 +29,17 @@
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
-		<dependency>
+		<!--<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
 			<version>7.10.2</version>
-			<scope>test</scope>
-		</dependency>
+		</dependency>-->
 
+		<dependency>
+			<groupId>io.github.bonigarcia</groupId>
+			<artifactId>webdrivermanager</artifactId>
+			<version>5.8.0</version>
+		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-sync -->
 		<dependency>
@@ -78,7 +81,6 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.16.0</version>
 		</dependency>
-
 	</dependencies>
 
 	<build>
