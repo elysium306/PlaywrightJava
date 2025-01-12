@@ -8,6 +8,8 @@
 
 # ignore compile files
 target
+
+### test output / compile files
 test-output/
 
 # ignore system environment files

@@ -14,51 +14,50 @@ import com.microsoft.playwright.BrowserType.LaunchOptions;
 
 public class PlaywrightBasics {
 
-    private Playwright playwright;
+	private Playwright playwright;
 
-    private Browser browser;
+	private Browser browser;
 
-    private BrowserContext browserContext;
+	private BrowserContext browserContext;
 
-    private APIRequest request;
+	private APIRequest request;
 
-    private APIRequestContext requestContext;
+	private APIRequestContext requestContext;
 
-    private Page page;
+	private Page page;
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 
-        System.out.println(Paths.get("chrome.exe"));
-    }
+		System.out.println(Paths.get("chrome.exe"));
+	}
 
-
-    @Test
-    public void loginApplication() {
+	@Test
+	public void loginApplication() {
 //		String baseURL = PropertyReader.getProperty("baseURL");
 
-        page.navigate("https://www.google.com");
-        String title = page.title();
-        System.out.println("*** Current title: " + title);
-        assertEquals(page.title(), "Google");
-    }
+		page.navigate("https://www.google.com");
+		String title = page.title();
+		System.out.println("*** Current title: " + title);
+		assertEquals(page.title(), "Google");
+	}
 
-    @BeforeMethod
-    public void setup() {
-        playwright = Playwright.create();
-        LaunchOptions option = new LaunchOptions();
-        option.setHeadless(false);
-        option.setExecutablePath(Path.of("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"));
-        browser = playwright.chromium().launch(option);
-        browserContext = browser.newContext();
-        page = browserContext.newPage();
-    }
+	@BeforeMethod
+	public void setup() {
+		playwright = Playwright.create();
+		LaunchOptions option = new LaunchOptions();
+		option.setHeadless(false);
+		option.setExecutablePath(Path.of("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"));
+		browser = playwright.chromium().launch(option);
+		browserContext = browser.newContext();
+		page = browserContext.newPage();
+	}
 
-    @AfterMethod
-    public void tearDown() {
-        page.close();
-        browserContext.close();
-        browser.close();
-        playwright.close();
-    }
+	@AfterMethod
+	public void tearDown() {
+		page.close();
+		browserContext.close();
+		browser.close();
+		playwright.close();
+	}
 
 }
