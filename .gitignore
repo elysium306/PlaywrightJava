@@ -1,8 +1,16 @@
 # ignore IDE settings
 .idea
 
+# ignore project files
+.classpath
+.project
+.settings/
+
 # ignore compile files
 target
+
+### test output / compile files
+test-output/
 
 # ignore system environment files
 src/main/resources/properties/env.properties

@@ -2,7 +2,6 @@ package com.playwright.ui.EtsyE2E.Tests;
 
 import static org.testng.Assert.assertEquals;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.testng.annotations.AfterMethod;
